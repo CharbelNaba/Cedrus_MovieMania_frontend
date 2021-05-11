@@ -1,0 +1,27 @@
+<table mdbTable>
+    <thead class="black white-text">
+      <tr>
+        <th *ngFor="let head of headElements" scope="col">{{head}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr mdbTableCol *ngFor="let movie of movies">
+        <td>{{movie.name}}</td>
+        <td>{{movie.genre_name}}</td>
+        <td>{{movie.rating}}</td>
+        <td><div class="btn-group" mdbDropdown>
+          <a mdbDropdownToggle type="button" mdbBtn color="primary" class="dropdown-toggle waves-light"
+            mdbWavesEffect>
+            Rate
+          </a>
+        
+          <div class="dropdown-menu dropdown-primary">
+            <button class="dropdown-item" *ngFor="let rating of ratings" (click)="giveRating(rating, movie.id)">{{rating}}</button>
+          </div>
+        </div>
+      </td>
+      <td><button type="button" mdbBtn color="danger" (click)="deleteMovie(movie.id)">delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+  
